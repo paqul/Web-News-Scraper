@@ -41,7 +41,7 @@ def TVN():
             info_tvn_link.append(tvn+info_zmienna[zmienna].get('href'))
         else:
             info_tvn_link.append(info_zmienna[zmienna].get('href'))
-    print(info_tvn, info_tvn_link) # tu ma byc return
+    print(len(info_tvn), info_tvn, info_tvn_link) # tu ma byc return
 
 
 def Polsat():
@@ -57,7 +57,7 @@ def Polsat():
         info_polsat.append(info[zmienna].get_text())
         # print(linki[zmienna].get('href'))
         info_polsat_link.append(linki[zmienna].get('href'))
-    print(info_polsat, info_polsat_link) # tu ma byc return
+    print(len(info_polsat), info_polsat, info_polsat_link) # tu ma byc return
 
 
 def TVP():
@@ -76,7 +76,7 @@ def TVP():
             linki_tvp.append(tvp + info[zmienna].get('href'))
         else:
             linki_tvp.append(info[zmienna].get('href'))
-    print(info_tvp, linki_tvp)
+    print(len(info_tvp), info_tvp, linki_tvp)
 
 
 def WP():
@@ -108,7 +108,7 @@ def WP():
             # print(x, infoall_text_2[zmienna].get_text()[1:len(infoall_text_2[zmienna].get_text())])
             wp_linki.append(infoall_linki_2[zmienna].get('href'))
             # print(x, infoall_linki_2[zmienna].get('href'))
-    print(wp_text, wp_linki)
+    print(len(wp_text), wp_text, wp_linki)
 
 
 def onet():
@@ -137,20 +137,44 @@ def onet():
                 "\n\n                \n                    \n                \n\n                \n\n                "))
             # print(x, onetall_linki_2[zmienna].get('href'))
             onet_link.append(onetall_linki_2[zmienna].get('href'))
-    print(onet_text, onet_link)
+    print(len(onet_text), onet_text, onet_link)
+
 
 def interia():
-    pass
-
+    interia = "https://www.interia.pl/"
+    stronka_interia = requests.get(interia)
+    infoall_interia = BeautifulSoup(stronka_interia.content, 'html.parser')
+    interiaall_text_r = infoall_interia.find_all(class_="tiles-ul")
+    interia_infoall = interiaall_text_r[0].find_all("a")
+    interiaall_0 = infoall_interia.find_all(id="facts_news_small_one")
+    interia_0 = infoall_interia.find_all(class_="news-one-a")
+    interia_text = [str(interiaall_0[0].get_text()).strip("\n")]
+    interia_link = [interia_0[0].get('href')]
+    interiaall_text = infoall_interia.find_all(class_="news-li")
+    interiaall_linki = infoall_interia.find_all(class_="news-a")
+    for x, zmienna in enumerate(range(0, 15)):
+        if x < 8:
+            # print(x, str(interia_infoall[zmienna].get_text()).strip("\n\n"))
+            interia_text.append(str(interia_infoall[zmienna].get_text()).strip("\n\n"))
+            # print(x, interia_infoall[zmienna].get('href'))
+            interia_link.append(interia_infoall[zmienna].get('href'))
+        elif x >= 8:
+            # print(x, str(interiaall_text[zmienna-8].get_text()).strip("\n\n"))
+            interia_text.append(str(interiaall_text[zmienna - 8].get_text()).strip("\n\n"))
+            # print(x, str(interiaall_linki[zmienna - 8].get('href')))
+            interia_link.append(str(interiaall_linki[zmienna - 8].get('href')))
+    print(len(interia_text), interia_text, interia_link)
 
 
 first = time_start()
-TVN()
-Polsat()
-TVP()
-WP()
-onet()
+
+# TVN()
+# Polsat()
+# TVP()
+# WP()
+# onet()
 # interia()
+
 second = time_stop()
 wynik = delta_time(first, second)
 
