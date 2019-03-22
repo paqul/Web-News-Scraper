@@ -78,37 +78,66 @@ def TVP():
             linki_tvp.append(info[zmienna].get('href'))
     print(info_tvp, linki_tvp)
 
+
 def WP():
     wp = "https://www.wp.pl/"
     stronka_WP = requests.get(wp)
     infoall_WP = BeautifulSoup(stronka_WP.content, 'html.parser')
     infoall_WP = infoall_WP.find("body")
-    # infoall_WP = infoall_WP.find(id='root')
-    # infoall_WP = infoall_WP.find(class_="rmnfvs-0 jfUSQI lpn5rg-1 jfyVeE")
-    # infoall_WP = infoall_WP.find(class_="sc-1fu2hk8-0 jIlknD")
+    infoall_WP = infoall_WP.find(id='root')
+    infoall_WP = infoall_WP.find(class_="rmnfvs-0 jfUSQI lpn5rg-1 jfyVeE")
+    infoall_WP = infoall_WP.find(class_="sc-1fu2hk8-0 jIlknD")
     infoall_text_0 = infoall_WP.find_all(class_="lclzf3-0 gxKMbd")
     infoall_linki_0 = infoall_WP.find_all(class_="sks72q-0 gsEIgT")
     infoall_text_1 = infoall_WP.find_all(class_="sc-135bwa8-3 jAavTs lclzf3-0 egPcYF")
     infoall_linki_1 = infoall_WP.find_all(class_="sks72q-0 desPEO")
     infoall_text = infoall_WP.find_all(class_="lclzf3-0 egPcYF")
     infoall_linki = infoall_WP.find_all(class_="sks72q-0 cqUubc")
+    infoall_text_2 = infoall_WP.find_all(class_="sc-1bp8799-1 gqsna")
+    infoall_linki_2 = infoall_WP.find_all(class_="sc-1bp8799-0 gLxdYj")
     wp_text = [infoall_text_0[0].get_text(), infoall_text_1[0].get_text()]
     wp_linki = [infoall_linki_0[0].get('href'), infoall_linki_1[0].get('href')]
-    for x, zmienna in enumerate(range(0, 7)):
-        print(x, infoall_text[zmienna].get_text())
-        wp_text.append(infoall_text[zmienna].get_text())
-        print(x, infoall_linki[zmienna].get('href'))
-        wp_linki.append(infoall_linki[zmienna].get('href'))
-    infoall_linki_3 = infoall_WP.find_all(class_="sks72q-0 WvEyB")
-    info_linki_3 = infoall_linki_3[0]
-    info_text_3 = info_linki_3.find_all(class_="lclzf3-0 egPcYF")
-    wp_text.append(info_text_3[0].get_text())
-    wp_linki.append(infoall_linki_3[0].get('href'))
-
+    for x, zmienna in enumerate(range(0, 15)):
+        if x < 7:
+            # print(x, infoall_text[zmienna].get_text())
+            wp_text.append(infoall_text[zmienna].get_text())
+            # print(x, infoall_linki[zmienna].get('href'))
+            wp_linki.append(infoall_linki[zmienna].get('href'))
+        elif x >= 7:
+            wp_text.append(infoall_text_2[zmienna].get_text()[1:len(infoall_text_2[zmienna].get_text())])
+            # print(x, infoall_text_2[zmienna].get_text()[1:len(infoall_text_2[zmienna].get_text())])
+            wp_linki.append(infoall_linki_2[zmienna].get('href'))
+            # print(x, infoall_linki_2[zmienna].get('href'))
     print(wp_text, wp_linki)
 
+
 def onet():
-    pass
+    onet = "https://www.onet.pl/"
+    stronka_onet = requests.get(onet)
+    infoall_onet = BeautifulSoup(stronka_onet.content, 'html.parser')
+    onetall_text = infoall_onet.find_all(class_="tWrp")
+    onetall_linki_1 = infoall_onet.find(class_="items")
+    onetall_text_2 = infoall_onet.find(class_="boxContent")
+    onetall_linki_2 = infoall_onet.find(class_="boxContent")
+    onetall_linki_1 = onetall_linki_1.find_all("a")
+    onetall_text_2 = onetall_text_2.find_all(class_="title")
+    onetall_linki_2 = onetall_linki_2.find_all("a")
+    onet_text = []
+    onet_link = []
+    for x, zmienna in enumerate(range(0, 15)):
+        if x < 9:
+            # print(x, onetall_text[zmienna].get_text(), end="")
+            onet_text.append(str(onetall_text[zmienna].get_text()).strip("\n"))
+            # print(x, onetall_linki_1[zmienna].get('href'))
+            onet_link.append(onetall_linki_1[zmienna].get('href'))
+        elif x >= 9:
+            # print(x, str(onetall_text_2[zmienna].get_text()).strip(
+            #     "\n\n                \n                    \n                \n\n                \n\n                "))
+            onet_text.append(str(onetall_text_2[zmienna].get_text()).strip(
+                "\n\n                \n                    \n                \n\n                \n\n                "))
+            # print(x, onetall_linki_2[zmienna].get('href'))
+            onet_link.append(onetall_linki_2[zmienna].get('href'))
+    print(onet_text, onet_link)
 
 def interia():
     pass
@@ -120,7 +149,7 @@ TVN()
 Polsat()
 TVP()
 WP()
-# onet()
+onet()
 # interia()
 second = time_stop()
 wynik = delta_time(first, second)
