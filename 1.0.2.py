@@ -9,18 +9,22 @@ frame_root = Frame(mainwindow).grid(row=0, column=0, sticky=N)
 
 #-------------------Frame 0 0 ---------------------------#
 frame_0_0 = Frame(frame_root)
+frame_opcje = LabelFrame(frame_0_0, text="Options", relief="groove", width=50, height=50)
 
-button_test = Button(frame_0_0, text="opt 0 0")
-button_test.grid()
+# button_test = Button(frame_opcje, text="OPCJE 0 0", width=50, height=10)
+# button_test.grid()
 
+frame_opcje.grid()
 frame_0_0.grid(row=0, column=0, columnspan=3)
 
 #-------------------Frame 0 1 ---------------------------#
 frame_0_1 = Frame(frame_root)
+frame_search = LabelFrame(frame_0_1, text="Search", relief="groove", width=50, height=50)
 
-button_test = Button(frame_0_1, text="searcher 0 1")
+button_test = Button(frame_search, text="searcher 0 1")
 button_test.grid()
 
+frame_search.grid()
 frame_0_1.grid(row=0, column=3, columnspan=3)
 
 #-------------------Frame 2 0 ---------------------------#
@@ -77,10 +81,17 @@ print('MAIN')
 #-------------------Frame horizontal ---------------------------#
 frame_1_0 = Frame(frame_root)
 
-empty_space_horizontal = Label(frame_1_0, bg="red", width=100)
-empty_space_horizontal.grid()
+empty_space_horizontal_1 = Label(frame_1_0, bg="red", width=100)
+empty_space_horizontal_1.grid()
 
 frame_1_0.grid(row=1, column=0, columnspan=15)
+
+frame_3_0 = Frame(frame_root)
+
+empty_space_horizontal_3 = Label(frame_3_0, bg="orange", width=100)
+empty_space_horizontal_3.grid()
+
+frame_3_0.grid(row=3, column=0, columnspan=15)
 
 #-------------------Frame Vertical ---------------------------#
 frame_0_7 = Frame(frame_root)
