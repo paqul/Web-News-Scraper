@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 
 
 mainwindow = Tk()
@@ -35,49 +36,61 @@ frame_0_1.grid(row=0, column=3, columnspan=3)#, padx=10, pady=10)
 #-------------------Frame 2 0 ---------------------------#
 frame_2_0 = Frame(frame_root)
 
-button_test = Button(frame_2_0, text="logo 2 0")
-button_test.grid()
+
+tvn_logo_img = PhotoImage(file="tvn.png")
+first_logo = Label(frame_2_0, image=tvn_logo_img)
+first_logo.image = tvn_logo_img
+first_logo.grid()
 
 frame_2_0.grid(row=2, column=0)
-
 
 #-------------------Frame 2 1 ---------------------------#
 frame_2_1 = Frame(frame_root)
 
-button_test = Button(frame_2_1, text="logo 2 1")
-button_test.grid()
+tvp_logo_img = PhotoImage(file="tvp.png")
+second_logo = Label(frame_2_1, image=tvp_logo_img)
+second_logo.image = tvp_logo_img
+second_logo.grid()
 
 frame_2_1.grid(row=2, column=1)
 
 #-------------------Frame 2 2 ---------------------------#
 frame_2_2 = Frame(frame_root)
 
-button_test = Button(frame_2_2, text="logo 2 2")
-button_test.grid()
+polsat_logo_img = PhotoImage(file="polsat.png")
+third_logo = Label(frame_2_2, image=polsat_logo_img)
+third_logo.image = polsat_logo_img
+third_logo.grid()
 
 frame_2_2.grid(row=2, column=2)
 
 #-------------------Frame 2 3 ---------------------------#
 frame_2_3 = Frame(frame_root)
 
-button_test = Button(frame_2_3, text="logo 2 3")
-button_test.grid()
+wp_logo_img = PhotoImage(file="wp.png")
+fourth_logo = Label(frame_2_3, image=wp_logo_img)
+fourth_logo.image = wp_logo_img
+fourth_logo.grid()
 
 frame_2_3.grid(row=2, column=3)
 
 #-------------------Frame 2 4 ---------------------------#
 frame_2_4 = Frame(frame_root)
 
-button_test = Button(frame_2_4, text="logo 2 4")
-button_test.grid()
+onet_logo_img = PhotoImage(file="onet.png")
+fiveth_logo = Label(frame_2_4, image=onet_logo_img)
+fiveth_logo.image = onet_logo_img
+fiveth_logo.grid()
 
 frame_2_4.grid(row=2, column=4)
 
 #-------------------Frame 2 5 ---------------------------#
 frame_2_5 = Frame(frame_root)
 
-button_test = Button(frame_2_5, text="logo 2 5")
-button_test.grid()
+interia_logo_img = PhotoImage(file="interia.png")
+sixth_logo = Label(frame_2_5, image=interia_logo_img)
+sixth_logo.image = interia_logo_img
+sixth_logo.grid()
 
 frame_2_5.grid(row=2, column=5)
 
